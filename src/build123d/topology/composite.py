@@ -233,7 +233,7 @@ class Compound(Mixin3D[TopoDS_Compound]):
         cls,
         txt: str,
         font_size: float,
-        font: str = "Arial",
+        font: str = "ReliefSingleLineOutline",
         font_path: PathLike[str] | str | None = None,
         font_style: FontStyle = FontStyle.REGULAR,
         text_align: tuple[TextAlign, TextAlign] = (TextAlign.CENTER, TextAlign.CENTER),
@@ -252,7 +252,7 @@ class Compound(Mixin3D[TopoDS_Compound]):
         Args:
             txt (str): text to render
             font_size (float): size of the font in model units
-            font (str, optional): font name. Defaults to "Arial"
+            font (str, optional): font name. Defaults to "ReliefSingleLineOutline"
             font_path (PathLike | str, optional): system path to font file. Defaults to None
             font_style (Font_Style, optional): font style, REGULAR, BOLD, BOLDITALIC, or
                 ITALIC. Defaults to Font_Style.REGULAR
@@ -304,7 +304,7 @@ class Compound(Mixin3D[TopoDS_Compound]):
         manager = FontManager()
         if font_path_str and manager.check_font(font_path_str):  # pragma: no cover
             face_names = manager.register_font(font_path_str, True, False)
-            # Check if font (name) is in face names and not bad or default (Arial)
+            # Check if font (name) is in face names and not bad or default (ReliefSingleLineOutline)
             font_name = font if font in face_names else face_names[0]
             system_font = manager.find_font(font_name, font_style)
         else:

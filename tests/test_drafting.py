@@ -67,7 +67,7 @@ from build123d.drafting import (
 
 metric = Draft(
     font_size=3.0,
-    font="Arial",
+    font="ReliefSingleLineOutline",
     font_style=FontStyle.REGULAR,
     head_type=HeadType.CURVED,
     arrow_length=3.0,
@@ -81,7 +81,7 @@ metric = Draft(
 )
 imperial = Draft(
     font_size=5.0,
-    font="Arial",
+    font="ReliefSingleLineOutline",
     font_style=FontStyle.REGULAR,
     head_type=HeadType.CURVED,
     arrow_length=3.0,

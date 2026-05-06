@@ -576,7 +576,7 @@ class Text(BaseSketchObject):
     Args:
         txt (str): text to render
         font_size (float): size of the font in model units
-        font (str, optional): font name. Defaults to "Arial"
+        font (str, optional): font name. Defaults to "ReliefSingleLineOutline"
         font_path (PathLike | str, optional): system path to font file. Defaults to None
         font_style (Font_Style, optional): font style, REGULAR, BOLD, BOLDITALIC, or
             ITALIC. Defaults to Font_Style.REGULAR
@@ -601,7 +601,7 @@ class Text(BaseSketchObject):
         self,
         txt: str,
         font_size: float,
-        font: str = "Arial",
+        font: str = "ReliefSingleLineOutline",
         font_path: PathLike[str] | str | None = None,
         font_style: FontStyle = FontStyle.REGULAR,
         text_align: tuple[TextAlign, TextAlign] = (TextAlign.CENTER, TextAlign.CENTER),

@@ -126,7 +126,7 @@ class TestFontHelpers(unittest.TestCase):
 
     def test_font_info(self):
         """Test expected FontInfo repr."""
-        name = "Arial"
+        name = "ReliefSingleLineOutline"
         styles = tuple(member for member in FontStyle)
         font = FontInfo(name, styles)
 

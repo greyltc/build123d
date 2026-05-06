@@ -161,7 +161,7 @@ class Draft:
 
     Args:
         font_size (float): size of the text in dimension lines and callouts. Defaults to 5.0.
-        font (str): font to use for text. Defaults to "Arial".
+        font (str): font to use for text. Defaults to "ReliefSingleLineOutline".
         font_style: text style. Defaults to FontStyle.REGULAR.
         head_type (HeadType, optional): arrow head shape. Defaults to HeadType.CURVED.
         arrow_length (float): arrow head length. Defaults to 3.0.
@@ -185,7 +185,7 @@ class Draft:
     unit_LUT: ClassVar[dict] = {True: "mm", False: '"'}
 
     font_size: float = 5.0
-    font: str = "Arial"
+    font: str = "ReliefSingleLineOutline"
     font_style: FontStyle = FontStyle.REGULAR
     head_type: HeadType = HeadType.CURVED
     arrow_length: float = 3.0
