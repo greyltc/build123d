@@ -31,6 +31,7 @@ import warnings
 from io import BytesIO, StringIO, TextIOBase
 from os import PathLike
 from typing import BinaryIO, Callable, TextIO, cast
+from collections.abc import Sequence
 
 import ezdxf
 from ezdxf.entities import DXFGraphic
@@ -458,11 +459,12 @@ def _process_entity(entity, doc) -> list[Shape]:
     return _flatten_import_result(new_object)
 
 
-def import_dxf(dxf_file: str | PathLike | TextIO | BinaryIO) -> ShapeList:
+def import_dxf(dxf_file: str | PathLike | TextIO | BinaryIO, layers: str | Sequence[str] | None = None) -> ShapeList:
     """Import shapes from a DXF file
 
     Args:
         dxf_file (str | PathLike | TextIO | BinaryIO): dxf file path or readable stream
+        layers (str | Sequence[str]): layer name(s) to filter by, Defaults to None
 
     Raises:
         DXFStructureError: file not found
@@ -485,8 +487,17 @@ def import_dxf(dxf_file: str | PathLike | TextIO | BinaryIO) -> ShapeList:
         raise ValueError(f"Failed to read {dxf_file}") from exc
     build123d_objects = []
 
+    if isinstance(layers, str):
+        layers = (layers,)
+
     # Iterate over all entities in the model space
     for entity in doc.modelspace():
-        build123d_objects.extend(_process_entity(entity, doc))
+        layer_match = True
+        if layers:
+            if entity.DEFAULT_ATTRIBS["layer"] not in layers:
+                layer_match = False
+
+        if layer_match:
+            build123d_objects.extend(_process_entity(entity, doc))
 
     return ShapeList(build123d_objects)
