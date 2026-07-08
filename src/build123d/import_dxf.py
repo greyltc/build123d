@@ -494,7 +494,7 @@ def import_dxf(dxf_file: str | PathLike | TextIO | BinaryIO, layers: str | Seque
     for entity in doc.modelspace():
         layer_match = True
         if layers:
-            if entity.DEFAULT_ATTRIBS["layer"] not in layers:
+            if entity.get_dxf_attrib("layer") not in layers:
                 layer_match = False
 
         if layer_match:
